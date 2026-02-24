@@ -1,0 +1,89 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 1463 >>
+stream
+BT
+/F1 11 Tf
+50 790 Td
+14 TL
+(Relatorio de Fluxo e Testes - Calculadora API) Tj
+T*
+(Gerado em: 2026-02-13 15:14:35) Tj
+T*
+() Tj
+T*
+(1\) Fluxo de autenticacao) Tj
+T*
+(   Cliente -> POST /auth/register -> API -> PostgreSQL \(cria usuario\)) Tj
+T*
+(   Cliente -> POST /auth/login -> API -> PostgreSQL \(valida usuario/senha\)) Tj
+T*
+(   API -> Cliente \(access_token + refresh_token\)) Tj
+T*
+(   Cliente -> GET /dashboard \(Bearer access_token\)) Tj
+T*
+(   Cliente -> POST /soma \(Bearer access_token\)) Tj
+T*
+(   Cliente -> POST /auth/refresh \(refresh_token\)) Tj
+T*
+(   API revoga refresh antigo e emite novos tokens) Tj
+T*
+(   Cliente -> POST /auth/logout \(refresh_token novo\)) Tj
+T*
+(   API revoga refresh token) Tj
+T*
+() Tj
+T*
+(2\) Resultado dos testes executados) Tj
+T*
+(   Usuario de teste: fluxo_user_1770992698) Tj
+T*
+(   POST /auth/register  -> 201  {"message":"Usuario cadastrado com sucesso"}) Tj
+T*
+(   POST /auth/login     -> 200  {"access_token":"...","refresh_token":"..."}) Tj
+T*
+(   GET  /dashboard      -> 200  {"usuario":"fluxo_user_1770992698", ...}) Tj
+T*
+(   POST /soma           -> 200  {"resultado":15.0,"operacao":"10.0 + 5.0 = 15.0"}) Tj
+T*
+(   POST /auth/refresh   -> 200  {"access_token":"...","refresh_token":"..."}) Tj
+T*
+(   POST /auth/logout    -> 200  {"message":"Logout realizado com sucesso"}) Tj
+T*
+() Tj
+T*
+(3\) Arquivos relacionados) Tj
+T*
+(   - docs/fluxo-autenticacao.mmd) Tj
+T*
+(   - README.md) Tj
+T*
+(   - main.py) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1826
+%%EOF

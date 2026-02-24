@@ -1,0 +1,33 @@
+flowchart TD
+    A[Cliente] -->|POST /auth/register| B[API FastAPI]
+    B -->|INSERT user| C[(PostgreSQL)]
+    C --> B
+    B --> A
+
+    A -->|POST /auth/login| B
+    B -->|SELECT user + valida senha| C
+    C --> B
+    B -->|gera access + refresh| A
+    B -->|INSERT refresh_token| C
+
+    A -->|GET /dashboard \n Authorization: Bearer access| B
+    B -->|valida JWT access| B
+    B -->|query métricas| C
+    C --> B
+    B --> A
+
+    A -->|POST /soma (ou outros cálculos) \n Authorization: Bearer access| B
+    B -->|valida JWT access| B
+    B --> A
+
+    A -->|POST /auth/refresh| B
+    B -->|valida refresh + estado token| C
+    C --> B
+    B -->|revoga refresh antigo| C
+    B -->|gera novo access + refresh| A
+    B -->|salva novo refresh| C
+
+    A -->|POST /auth/logout| B
+    B -->|revoga refresh token| C
+    C --> B
+    B --> A

@@ -14,42 +14,7 @@ API REST de calculadora com autenticação JWT, refresh token com sessão no Red
 
 ## Diagrama do fluxo
 
-Arquivo: `docs/fluxo-autenticacao.mmd`
-
-```mermaid
-flowchart TD
-    A[Cliente] -->|POST /auth/register| B[API FastAPI]
-    B -->|INSERT user| C[(PostgreSQL)]
-    C --> B
-    B --> A
-
-    A -->|POST /auth/login| B
-    B -->|SELECT user + valida senha| C
-    C --> B
-    B -->|gera access + refresh| A
-    B -->|SET refresh_token (TTL)| D[(Redis)]
-
-    A -->|GET /dashboard \\n Authorization: Bearer access| B
-    B -->|valida JWT access| B
-    B -->|query métricas| C
-    C --> B
-    B --> A
-
-    A -->|POST /soma (ou outros cálculos) \\n Authorization: Bearer access| B
-    B -->|valida JWT access| B
-    B --> A
-
-    A -->|POST /auth/refresh| B
-    B -->|valida refresh + estado token| D
-    D --> B
-    B -->|revoga refresh antigo + salva novo| D
-    B -->|gera novo access + refresh| A
-
-    A -->|POST /auth/logout| B
-    B -->|revoga refresh token| D
-    D --> B
-    B --> A
-```
+Veja `docs/fluxo-autenticacao.mmd` para o diagrama de autenticação.
 
 ## Stack
 
